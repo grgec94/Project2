@@ -4,9 +4,10 @@ using System.Text;
 
 namespace Project2
 {
-    public class Operations
+    class Operations
     {
         public const string Enlist = "ENLIST";
         public const string Display = "DISPLAY";
+        public const string Exit = "EXIT";
     }
 }

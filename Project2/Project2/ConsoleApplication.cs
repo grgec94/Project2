@@ -19,14 +19,14 @@ namespace Project2
                 command = command.ToUpper();
                 switch (command)
                 {
-                    case Commands.Enlist:
-                        service.HandleEnlist();
+                    case Operations.Enlist:
+                        service.HandleAdd();
                         break;
-                    case Commands.Display:
+                    case Operations.Display:
                         service.HandleDisplay();
                         break;
                 }
-            } while (command != Commands.Exit);
+            } while (command != Operations.Exit);
 
         }
         static void HandleHelp()

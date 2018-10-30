@@ -7,21 +7,19 @@ using System.Linq;
 namespace Project2
 {
 
-        public abstract class Student<T> where T : Person, new()
+        public abstract class BaseService<T> where T : Person, new()
         {
             private readonly string roleName;
-            private readonly ClassLibrary storage;
+            private readonly StudentContainer storage;
 
-
-
-            protected Student(string roleName)
+            protected BaseService(string roleName)
             {
                 this.roleName = roleName;
-                storage = ClassLibrary.Instance;
+                storage = StudentContainer.Instance;
 
             }
 
-            protected ClassLibrary GetStorageInstance() => storage;
+            protected StudentContainer GetStorageInstance() => storage;
             public virtual T Add()
             {
                 T model = new T();
@@ -44,20 +42,20 @@ namespace Project2
                 do
                 {
                     Console.WriteLine("Gpa");
-                    valid = Console.ReadLine().IsValidInt(out var age);
+                    valid = Console.ReadLine().IsValidInt(out var gpa);
                     int gpa1 = gpa;
 
                 } while (!valid);
 
-                model.Roles = roleName;
+                model.FirstName = roleName;
 
                 model = AddSpecific(model);
 
                 return storage.Add(model) as T;
             }
-            public virtual T Get(string LastName)
+            public virtual T Get(int id)
             {
-                var result = storage.Get(LastName, roleName) as T;
+                var result = storage.Get(id, roleName) as T;
 
                 if (result != null)
                 {
@@ -75,13 +73,10 @@ namespace Project2
             }
 
             protected abstract T AddSpecific(T model);
-
-
+        
             protected abstract void DisplayList(IEnumerable<T> list);
-
-
+        
             protected abstract void DisplaySingle(T model);
-
-
+        
         }
 }

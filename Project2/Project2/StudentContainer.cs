@@ -24,19 +24,20 @@ namespace Project2
             Storage.Add(role);                          // Dodaj u listu
             return role;
         }
-    }
-    public IEnumerable<Person> FindAll()
-    {
-        return StudentContainer.ToList();
-    }
 
-    public Person Get(string Roles, string Role)
-    {
-        if (string.IsNullOrEmpty(Role))
+        public IEnumerable<Person> FindAll()
         {
-            return StudentContainer.FirstOrDefault(e => e.Roles == Role);
+            return Storage.ToList();
         }
 
-        return StudentContainer.FirstOrDefault(e => e.Roles == Role);
+        public Person Get(int id, string lastName)
+        {
+            if (string.IsNullOrEmpty(lastName))
+            {
+                return Storage.FirstOrDefault(e => e.Id == id);
+            }
+
+            return Storage.FirstOrDefault(e => e.Id == id && e.LastName == lastName);
+        }
     }
 }

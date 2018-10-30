@@ -4,23 +4,30 @@ using System.Text;
 
 namespace Project2
 {
-    public class CommonService : Student<Person>
+    public class CommonService : BaseService<Person>
     {
         public CommonService() : base(string.Empty)
         {
         }
 
-        public new IEnumerable<Student> FindAll()
+        public new IEnumerable<Person> FindAll()
         {
             return base.FindAll();
         }
 
-        protected override Student AddSpecific(Student model)
+
+        protected override Person AddSpecific(Person model)
         {
             throw new NotImplementedException();
         }
 
-        protected override void DisplayList(IEnumerable<Student> list)
+
+        protected override void DisplayList(IEnumerable<Person> list)
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override void DisplaySingle(Person model)
         {
             throw new NotImplementedException();
         }
