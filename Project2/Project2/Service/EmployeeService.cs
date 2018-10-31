@@ -6,12 +6,12 @@ using System.Linq;
 //JEZGRA BIZNIS LOGIKE
 namespace Project2
 {
-    public class ClassLibrary
+    public class EmployeeService
     {
         private readonly CommonService commonService;
         private readonly StudentService studentService;
 
-        public ClassLibrary()
+        public EmployeeService()
         {
             commonService = new CommonService();
             studentService = new StudentService();
@@ -19,13 +19,16 @@ namespace Project2
 
         public void HandleAdd()
         {
+            var valid = false;
             string role;
             do
             {
                 Console.WriteLine("Select person:");
                 role = Console.ReadLine();
+                valid =RoleValidator.IsValidRole(role);
 
-            } while (role != "student");
+            } while (!valid);
+            
             studentService.Add();
 
         }
@@ -35,10 +38,13 @@ namespace Project2
 
             for (int i = 0; i < employeeList.Length; i++)
             {
-                Console.WriteLine($"#{i + 1}. {employeeList[i].LastName} {employeeList[i].FirstName}");
+
+                Console.WriteLine($"#{i + 1}. {employeeList[i].LastName} {employeeList[i].FirstName} {employeeList[i].Role}");
+             
             }
 
             return employeeList;
+
         }
         public void HandleList(string roleName)
         {

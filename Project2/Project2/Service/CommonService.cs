@@ -15,6 +15,10 @@ namespace Project2
             return base.FindAll();
         }
 
+        public IEnumerable<Person> Find(string roleName)
+        {
+            return GetStorageInstance().Find(roleName);
+        }
 
         protected override Person AddSpecific(Person model)
         {

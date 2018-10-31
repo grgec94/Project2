@@ -9,13 +9,14 @@ namespace Project2
     {
         public static bool IsValidRole(string roleName)
         {
+            roleName = roleName.ToUpper();
             var valid = !string.IsNullOrEmpty(roleName) &&
                    (string.Equals(roleName, Roles.Student, StringComparison.InvariantCultureIgnoreCase));
 
             if (!valid)
             {
                 Console.WriteLine("Invalid role name");
-                Console.WriteLine("Possible roles are: Student)");
+                Console.WriteLine("Possible roles are: Student");
             }
 
             return valid;

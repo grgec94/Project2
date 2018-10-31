@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 namespace Project2
 {
-    class ConsoleApplication
+    class Program
     {
         static void Main(string[] args)
         {
-            var service = new ClassLibrary();
+            var service = new EmployeeService();
 
             HandleHelp();
 

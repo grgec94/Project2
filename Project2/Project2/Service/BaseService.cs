@@ -33,6 +33,7 @@ namespace Project2
                     Console.WriteLine("First name");
                     valid = Console.ReadLine().IsValidString(out var firstName);
                     model.FirstName = firstName;
+
                 } while (!valid);
 
                 do
