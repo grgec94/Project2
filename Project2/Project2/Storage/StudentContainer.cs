@@ -30,14 +30,24 @@ namespace Project2
             return Storage.ToList();
         }
 
-        public Person Get(int id, string lastName)
+        public Person Get(int id, string roleName)
         {
-            if (string.IsNullOrEmpty(lastName))
+            if (string.IsNullOrEmpty(roleName))
             {
                 return Storage.FirstOrDefault(e => e.Id == id);
             }
 
-            return Storage.FirstOrDefault(e => e.Id == id && e.LastName == lastName);
+            return Storage.FirstOrDefault(e => e.Id == id && e.LastName == roleName);
+        }
+
+        public IEnumerable<Person> Find(string roleName)
+        {
+            if (!string.IsNullOrEmpty(roleName))
+            {
+                return Storage.Where(e => e.Role == roleName).ToList();
+            }
+
+            return Storage.Where(e => e.Role != Roles.Student).ToList();
         }
     }
 }

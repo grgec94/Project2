@@ -6,7 +6,7 @@ using System.Linq;
 //JEZGRA BIZNIS LOGIKE
 namespace Project2
 {
-    class ClassLibrary
+    public class ClassLibrary
     {
         private readonly CommonService commonService;
         private readonly StudentService studentService;
@@ -19,11 +19,11 @@ namespace Project2
 
         public void HandleAdd()
         {
-           string role;
+            string role;
             do
             {
                 Console.WriteLine("Select person:");
-              role = Console.ReadLine();
+                role = Console.ReadLine();
 
             } while (role != "student");
             studentService.Add();
@@ -35,10 +35,19 @@ namespace Project2
 
             for (int i = 0; i < employeeList.Length; i++)
             {
-                Console.WriteLine($"#{i + 1}. {employeeList[i].LastName} {employeeList[i].FirstName} - {employeeList[i].Gpa}");
+                Console.WriteLine($"#{i + 1}. {employeeList[i].LastName} {employeeList[i].FirstName}");
             }
 
             return employeeList;
+        }
+        public void HandleList(string roleName)
+        {
+            switch (roleName)
+            {
+                case Roles.Student:
+                    studentService.Find();
+                    break;
+            }
         }
     }
 }

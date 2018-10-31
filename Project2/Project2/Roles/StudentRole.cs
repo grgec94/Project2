@@ -4,7 +4,8 @@ using System.Text;
 
 namespace Project2
 {
-    class StudentIdGenerator
+    public class StudentRole : Person
     {
+        public float Gpa { get; set; }
     }
 }
