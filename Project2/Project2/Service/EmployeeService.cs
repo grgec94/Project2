@@ -38,8 +38,11 @@ namespace Project2
 
             for (int i = 0; i < employeeList.Length; i++)
             {
-
-                Console.WriteLine($"#{i + 1}. {employeeList[i].LastName} {employeeList[i].FirstName} {employeeList[i].Role}");
+                if (employeeList[i].Role == Roles.Student)
+                {
+                    studentService.DisplaySingle(employeeList[i] as StudentRole);
+               }
+                //Console.WriteLine($"#{i + 1}. {employeeList[i].LastName} {employeeList[i].FirstName} {employeeList[i].Role}");
              
             }
 

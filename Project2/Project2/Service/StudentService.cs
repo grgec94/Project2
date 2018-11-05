@@ -32,7 +32,7 @@ namespace Project2
             }
         }
 
-        protected override void DisplaySingle(StudentRole model)
+        public override void DisplaySingle(StudentRole model)
         {
             Console.WriteLine($"{model.Id}: {model.LastName} {model.FirstName}, Gpa: {model.Gpa} ");
         }

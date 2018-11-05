@@ -93,7 +93,7 @@ namespace Project2
         
             protected abstract void DisplayList(IEnumerable<T> list);
         
-            protected abstract void DisplaySingle(T model);
+            public abstract void DisplaySingle(T model);
         
         }
 }

@@ -31,7 +31,7 @@ namespace Project2
             throw new NotImplementedException();
         }
 
-        protected override void DisplaySingle(Person model)
+        public override void DisplaySingle(Person model)
         {
             throw new NotImplementedException();
         }
