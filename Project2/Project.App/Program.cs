@@ -25,7 +25,7 @@ namespace Project.App
                 switch (command)
                 {
                     case Operations.Enlist:
-                        service.HandleAdd();
+                        service.Add();
                         break;
                     case Operations.Display:
                         service.HandleDisplay();

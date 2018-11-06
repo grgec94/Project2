@@ -46,29 +46,7 @@ namespace Project.Code
             return storage.Add(model);
         }
 
-        public void HandleAdd()
-        {
-            string role;
-            do
-            {
-                Console.WriteLine("Select person:");
-                role = Console.ReadLine();
-                role = role.ToUpper();
-                if (role != "STUDENT")
-                {
-                    Console.WriteLine("Wrong input, only input is student");
-                }
 
-            } while (role != "STUDENT");
-
-            switch (role)
-            {
-                case "STUDENT":
-                    Add();
-                    break;
-
-            }
-        }
         public IEnumerable<Person> FindAll()
         {
             return StudentContainer.Instance.FindAll();
@@ -77,13 +55,13 @@ namespace Project.Code
         public IEnumerable<Student> HandleDisplay()
         {
 
-            var List = storage.FindAll().Cast<Student>().ToArray();
+            var list = storage.FindAll().ToArray();
 
-            for (int i = 0; i < List.Length; i++)
+            for (int i = 0; i < list.Length; i++)
             {
-                Console.WriteLine($" {List[i].Id}: {List[i].LastName}, {List[i].FirstName}, {List[i].Gpa}");
+                Console.WriteLine($" {list[i].Id}: {list[i].LastName}, {list[i].FirstName}, {list[i].Gpa}");
             }
-            return List;
+            return list;
         }
 
     }
