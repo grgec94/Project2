@@ -40,7 +40,7 @@ namespace Project.Code
             do
             {
                 Console.WriteLine("Gpa");
-                valid = Console.ReadLine().IsValidInt(out var gpa);
+                valid = Console.ReadLine().IsValidFloat(out var gpa);
                 model.Gpa = gpa;
             } while (!valid);
             return storage.Add(model);

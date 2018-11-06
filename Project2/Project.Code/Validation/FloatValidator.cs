@@ -10,9 +10,10 @@ namespace Project.Code
         {
             if (float.TryParse(input, out var result))
             {
-                if (result < 0)
+                if (result < 1 || result >5)
                 {
                     number = -1;
+                    Console.WriteLine("You must insert a correct number.");
                     return false;
                 }
 
@@ -20,7 +21,7 @@ namespace Project.Code
                 return true;
             }
             number = -1;
-            Console.WriteLine("You must insert a number.");
+            //Console.WriteLine("You must insert a correct number.");
             return false;
         }
     }
