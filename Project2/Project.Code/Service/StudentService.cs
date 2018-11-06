@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Globalization;
+using System.Linq;
 
-namespace Project2
+namespace Project.Code
 {
-    public class StudentService<T> where T : Person, new()
+    public class StudentService : Person
     {
         private readonly StudentContainer storage;
 
@@ -16,9 +16,9 @@ namespace Project2
 
         protected StudentContainer GetStorageInstance() => storage;
 
-        public virtual T Add()
+        public virtual Student Add()
         {
-            T model = new T();
+            Student model = new Student();
             model.Id = StudentIdGenerator.Instance.GetUniqueId();
 
             var valid = false;
@@ -43,50 +43,48 @@ namespace Project2
                 valid = Console.ReadLine().IsValidInt(out var gpa);
                 model.Gpa = gpa;
             } while (!valid);
-            return storage.Add(model) as T;
+            return storage.Add(model);
         }
-    }
 
-    public class EmployeeService
-    {
-        private readonly StudentService<Student> studentService;
-
-        public EmployeeService()
-        {
-            studentService = new StudentService<Student>();
-        }
         public void HandleAdd()
         {
-
             string role;
             do
             {
                 Console.WriteLine("Select person:");
                 role = Console.ReadLine();
-               if (role != "student")
+                role = role.ToUpper();
+                if (role != "STUDENT")
                 {
-                    Console.WriteLine("Wrong input");
+                    Console.WriteLine("Wrong input, only input is student");
                 }
-            } while (role != "student");
 
-            studentService.Add();
+            } while (role != "STUDENT");
 
-        }
-        public IEnumerable<Person> HandleDisplay()
-        {
-            var employeeList = StudentContainer.Instance.FindAll().ToArray();
-
-            for (int i = 0; i < employeeList.Length; i++)
+            switch (role)
             {
-                if (employeeList[i].Role == Roles.Student)
-                {
-                    studentService.DisplaySingle(employeeList[i] as Student);
-                }
-                //Console.WriteLine($"#{i + 1}. {employeeList[i].LastName} {employeeList[i].FirstName} {employeeList[i].Role}");
+                case "STUDENT":
+                    Add();
+                    break;
 
             }
-
-            return employeeList;
         }
+        public IEnumerable<Person> FindAll()
+        {
+            return StudentContainer.Instance.FindAll();
+        }
+
+        public IEnumerable<Student> HandleDisplay()
+        {
+
+            var List = storage.FindAll().Cast<Student>().ToArray();
+
+            for (int i = 0; i < List.Length; i++)
+            {
+                Console.WriteLine($" {List[i].Id}: {List[i].LastName}, {List[i].FirstName}, {List[i].Gpa}");
+            }
+            return List;
+        }
+
     }
 }

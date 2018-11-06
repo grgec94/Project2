@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Project2
+namespace Project.Code
 {
     public class StudentContainer
     {
@@ -25,7 +25,7 @@ namespace Project2
             return role;
         }
 
-        public IEnumerable<Person> FindAll()
+        public IEnumerable<Student> FindAll()
         {
             return Storage.ToList();
         }

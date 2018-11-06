@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Project2
+namespace Project.Code
 {
     public class StudentIdGenerator
     {
@@ -14,7 +14,7 @@ namespace Project2
 
         private StudentIdGenerator()
         {
-            uniqueId = 0;
+            uniqueId = 1;
         }
 
         public static StudentIdGenerator Instance => instance ?? (instance = new StudentIdGenerator());

@@ -1,15 +1,16 @@
 ﻿using System;
+using Project.Code;
 using System.Collections.Generic;
 using System.Linq;
-namespace Project2
+
+namespace Project.App
 {
     class Program
     {
         static void Main(string[] args)
         {
 
-            var service = new StudentService<Student>();
-            var employeeService = new EmployeeService();
+            var service = new StudentService();
 
             HandleHelp();
 
@@ -24,10 +25,10 @@ namespace Project2
                 switch (command)
                 {
                     case Operations.Enlist:
-                        employeeService.HandleAdd();
+                        service.HandleAdd();
                         break;
                     case Operations.Display:
-                        employeeService.HandleDisplay();
+                        service.HandleDisplay();
                         break;
                     default:
                         Console.WriteLine("Invalid command!");
